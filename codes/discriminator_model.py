@@ -10,8 +10,7 @@ from keras.layers import *
 from keras.initializers import RandomNormal
 
 def discriminator_model(x):
-    x = Conv2D(112, 4, strides=2, padding='same', use_bias=False, kernel_initializer=RandomNormal())(x)
-    x = BatchNormalization()(x)
+    x = Conv2D(112, 4, strides=2, padding='same', kernel_initializer=RandomNormal())(x)
     x = LeakyReLU(alpha=0.2)(x)
 
     x = Conv2D(224, 4, strides=2, padding='same', use_bias=False, kernel_initializer=RandomNormal())(x)
