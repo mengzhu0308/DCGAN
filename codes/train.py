@@ -28,7 +28,7 @@ if __name__ == '__main__':
     initial_epoch = 0
     img_size = (28, 28, 1)
     dst_img_size = (140, 140)
-    latent_dim = (img_size[0] + img_size[1]) // 2
+    latent_dim = 100
 
     (X_train, Y_train), _ = get_mnist()
     X_train = X_train[Y_train == 8]
