@@ -15,7 +15,6 @@ def generator_model(x, out_imgsize=(28, 28, 1)):
 
     x = Dense(h * w * 224, kernel_initializer=RandomNormal())(x)
     x = Reshape((h, w, 224))(x)
-    x = BatchNormalization()(x)
     x = LeakyReLU(alpha=0.2)(x)
 
     x = UpSampling2D()(x)
@@ -26,7 +25,7 @@ def generator_model(x, out_imgsize=(28, 28, 1)):
 
     x = UpSampling2D()(x)
 
-    x = Conv2D(out_c, 5, padding='same', use_bias=False, kernel_initializer=RandomNormal())(x)
+    x = Conv2D(out_c, 5, padding='same', kernel_initializer=RandomNormal())(x)
     x = Activation('tanh')(x)
 
     return x
