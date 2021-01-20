@@ -22,8 +22,8 @@ from generator_model import generator_model
 if __name__ == '__main__':
     num_classes = 1
     batch_size = 64
-    d_init_lr = 5e-4
-    gan_init_lr = 5e-4
+    d_init_lr = 1e-5
+    gan_init_lr = 1e-5
     epochs = 300
     initial_epoch = 0
     img_size = (28, 28, 1)
