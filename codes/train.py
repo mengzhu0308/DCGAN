@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
     (X_train, Y_train), _ = get_mnist()
     X_train = X_train[Y_train == 8]
-    X_train = np.expand_dims(X_train / 128 - 1, 3)
+    X_train = np.expand_dims(X_train / 127.5 - 1, 3)
 
     dataset = Dataset(X_train)
     generator = data_generator(dataset, batch_size=batch_size, shuffle=True)
@@ -99,8 +99,8 @@ if __name__ == '__main__':
         if total_a_loss < best_gan_loss:
             g_model.save_weights('best_g_wts.weights')
 
-        img = cv2.resize(np.clip(np.round((real_batch_images[0] + 1)) * 128, 0, 255).astype('uint8'), dst_img_size)
+        img = cv2.resize(np.clip(np.round((real_batch_images[0] + 1)) * 127.5, 0, 255).astype('uint8'), dst_img_size)
         cv2.imwrite('real_image.png', img)
 
-        img = cv2.resize(np.clip(np.round((generated_images[0] + 1)) * 128, 0, 255).astype('uint8'), dst_img_size)
+        img = cv2.resize(np.clip(np.round((generated_images[0] + 1)) * 127.5, 0, 255).astype('uint8'), dst_img_size)
         cv2.imwrite('generated_image.png', img)
