@@ -99,8 +99,8 @@ if __name__ == '__main__':
         if total_a_loss < best_gan_loss:
             g_model.save_weights('best_g_wts.weights')
 
-        img = cv2.resize(np.clip(np.round((real_batch_images[0] + 1)) * 127.5, 0, 255).astype('uint8'), dst_img_size)
+        img = cv2.resize(np.round((real_batch_images[0] + 1) * 127.5).astype('uint8'), dst_img_size)
         cv2.imwrite('real_image.png', img)
 
-        img = cv2.resize(np.clip(np.round((generated_images[0] + 1)) * 127.5, 0, 255).astype('uint8'), dst_img_size)
+        img = cv2.resize(np.round((generated_images[0] + 1) * 127.5).astype('uint8'), dst_img_size)
         cv2.imwrite('generated_image.png', img)
